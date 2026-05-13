@@ -1,0 +1,937 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Christian Vazquez - Insurance Broker</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--blue:#123c69;
+--blue2:#1f6fbb;
+--light:#eaf5ff;
+--cream:#fffaf3;
+--text:#1b2430;
+--muted:#5d6b7a;
+--shadow:0 18px 45px rgba(18,60,105,.14);
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+html{
+scroll-behavior:smooth;
+}
+
+body{
+font-family:"Inter",sans-serif;
+background:linear-gradient(180deg,#fff 0%,#f5fbff 45%,#fffaf3 100%);
+color:var(--text);
+overflow-x:hidden;
+}
+
+a{
+text-decoration:none;
+color:inherit;
+}
+
+section{
+padding:90px 22px;
+}
+
+.container{
+max-width:1120px;
+margin:auto;
+}
+
+.nav{
+position:fixed;
+top:0;
+width:100%;
+z-index:1000;
+background:rgba(255,255,255,.88);
+backdrop-filter:blur(16px);
+border-bottom:1px solid rgba(18,60,105,.08);
+}
+
+.nav-inner{
+max-width:1120px;
+margin:auto;
+padding:15px 22px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+gap:16px;
+}
+
+.logo{
+font-weight:800;
+color:var(--blue);
+font-size:1.05rem;
+}
+
+.nav-links{
+display:flex;
+gap:18px;
+font-size:.92rem;
+font-weight:700;
+color:var(--muted);
+}
+
+.nav-links a:hover{
+color:var(--blue2);
+}
+
+.nav-cta{
+background:var(--blue2);
+color:white;
+padding:11px 17px;
+border-radius:999px;
+font-weight:800;
+font-size:.9rem;
+}
+
+.hero{
+padding-top:150px;
+min-height:100vh;
+display:flex;
+align-items:center;
+}
+
+.hero-grid{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:50px;
+align-items:center;
+}
+
+.badge{
+display:inline-flex;
+padding:9px 14px;
+background:var(--light);
+color:var(--blue);
+border-radius:999px;
+font-weight:800;
+font-size:.88rem;
+margin-bottom:22px;
+}
+
+h1{
+font-size:clamp(2.7rem,6vw,5rem);
+line-height:.96;
+letter-spacing:-.07em;
+color:var(--blue);
+margin-bottom:22px;
+}
+
+.hero p{
+font-size:1.1rem;
+line-height:1.7;
+color:var(--muted);
+margin-bottom:28px;
+max-width:600px;
+}
+
+.hero-actions{
+display:flex;
+gap:14px;
+flex-wrap:wrap;
+margin-bottom:20px;
+}
+
+.btn{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+padding:14px 22px;
+border-radius:999px;
+font-weight:800;
+transition:.28s;
+}
+
+.btn-primary{
+background:var(--blue2);
+color:white;
+box-shadow:0 14px 28px rgba(31,111,187,.22);
+}
+
+.btn-secondary{
+background:white;
+color:var(--blue);
+border:1px solid rgba(18,60,105,.14);
+}
+
+.btn:hover{
+transform:translateY(-3px);
+}
+
+.license-box{
+display:flex;
+gap:12px;
+flex-wrap:wrap;
+margin-top:14px;
+font-size:.92rem;
+font-weight:700;
+color:var(--muted);
+}
+
+.hero-card{
+background:white;
+padding:20px;
+border-radius:32px;
+box-shadow:var(--shadow);
+position:relative;
+}
+
+.profile{
+width:100%;
+aspect-ratio:4/5;
+object-fit:cover;
+border-radius:24px;
+background:linear-gradient(135deg,#dcefff,#fff3df);
+}
+
+.floating-note{
+position:absolute;
+left:10px;
+bottom:24px;
+background:rgba(255,255,255,.94);
+padding:16px;
+border-radius:18px;
+font-size:.9rem;
+font-weight:800;
+color:var(--blue);
+box-shadow:0 12px 30px rgba(18,60,105,.13);
+}
+
+.section-title{
+text-align:center;
+margin-bottom:46px;
+}
+
+.section-title h2{
+font-size:clamp(2rem,4vw,3rem);
+color:var(--blue);
+margin-bottom:12px;
+}
+
+.section-title p{
+color:var(--muted);
+max-width:680px;
+margin:auto;
+line-height:1.7;
+}
+
+.about-box,
+.carrier-box,
+.story{
+background:white;
+border-radius:28px;
+padding:40px;
+box-shadow:var(--shadow);
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:30px;
+align-items:center;
+}
+
+.about-highlight{
+background:linear-gradient(135deg,var(--light),var(--cream));
+padding:28px;
+border-radius:22px;
+}
+
+.about-highlight h3,
+.carrier-box h3{
+color:var(--blue);
+margin-bottom:12px;
+font-size:1.6rem;
+}
+
+.about-highlight p,
+.about-text p,
+.carrier-box p{
+color:var(--muted);
+line-height:1.75;
+margin-bottom:12px;
+}
+
+.cards,
+.testimonials{
+display:grid;
+grid-template-columns:repeat(4,1fr);
+gap:18px;
+}
+
+.card,
+.testimonial{
+background:white;
+border-radius:22px;
+padding:26px;
+box-shadow:0 12px 30px rgba(18,60,105,.09);
+transition:.28s;
+}
+
+.card:hover,
+.testimonial:hover{
+transform:translateY(-7px);
+}
+
+.icon{
+width:46px;
+height:46px;
+border-radius:14px;
+display:grid;
+place-items:center;
+background:var(--light);
+margin-bottom:18px;
+font-size:1.3rem;
+}
+
+.card h3,
+.testimonial h3{
+color:var(--blue);
+margin-bottom:10px;
+}
+
+.card p,
+.testimonial p{
+color:var(--muted);
+line-height:1.7;
+}
+
+.carrier-tags{
+display:flex;
+flex-wrap:wrap;
+gap:12px;
+}
+
+.carrier-tags span{
+background:var(--light);
+color:var(--blue);
+padding:12px 16px;
+border-radius:999px;
+font-weight:800;
+font-size:.9rem;
+}
+
+.story{
+background:var(--blue);
+color:white;
+}
+
+.story p{
+color:rgba(255,255,255,.82);
+line-height:1.8;
+}
+
+.quote{
+background:rgba(255,255,255,.12);
+padding:28px;
+border-radius:24px;
+font-size:1.2rem;
+font-weight:800;
+line-height:1.4;
+}
+
+.testimonials{
+grid-template-columns:repeat(3,1fr);
+}
+
+.testimonial span{
+color:var(--muted);
+font-size:.9rem;
+font-weight:700;
+}
+
+.form-wrap{
+max-width:760px;
+margin:auto;
+background:white;
+padding:38px;
+border-radius:30px;
+box-shadow:var(--shadow);
+}
+
+.form-grid{
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:16px;
+}
+
+.field{
+display:flex;
+flex-direction:column;
+gap:8px;
+}
+
+label{
+font-weight:800;
+color:var(--blue);
+font-size:.92rem;
+}
+
+input,
+select,
+textarea{
+width:100%;
+padding:15px 16px;
+border-radius:16px;
+border:1px solid rgba(18,60,105,.16);
+font-family:inherit;
+font-size:1rem;
+background:#fbfdff;
+}
+
+textarea{
+min-height:110px;
+resize:vertical;
+}
+
+.full{
+grid-column:1/-1;
+}
+
+.calendar-box{
+max-width:760px;
+margin:22px auto 0;
+background:linear-gradient(135deg,var(--light),var(--cream));
+padding:26px;
+border-radius:26px;
+text-align:center;
+box-shadow:0 12px 30px rgba(18,60,105,.08);
+}
+
+.calendar-box h3{
+color:var(--blue);
+margin-bottom:10px;
+}
+
+.calendar-box p{
+color:var(--muted);
+margin-bottom:18px;
+line-height:1.7;
+}
+
+.footer{
+text-align:center;
+padding:36px 22px;
+color:var(--muted);
+font-size:.92rem;
+}
+
+.footer p{
+margin-bottom:6px;
+}
+
+.reveal{
+opacity:0;
+transform:translateY(24px);
+transition:.8s;
+}
+
+.reveal.active{
+opacity:1;
+transform:translateY(0);
+}
+
+@media(max-width:900px){
+
+.hero-grid,
+.about-box,
+.carrier-box,
+.story{
+grid-template-columns:1fr;
+}
+
+.cards{
+grid-template-columns:repeat(2,1fr);
+}
+
+.testimonials{
+grid-template-columns:1fr;
+}
+
+.nav-links{
+display:none;
+}
+
+}
+
+@media(max-width:600px){
+
+.cards,
+.form-grid{
+grid-template-columns:1fr;
+}
+
+.hero-actions .btn{
+width:100%;
+}
+
+.about-box,
+.carrier-box,
+.story,
+.form-wrap{
+padding:26px;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="nav">
+<div class="nav-inner">
+
+<a href="#inicio" class="logo">
+Christian Vazquez
+</a>
+
+<div class="nav-links">
+<a href="#inicio">Inicio</a>
+<a href="#sobre-mi">Sobre mí</a>
+<a href="#servicios">Servicios</a>
+<a href="#companias">Compañías</a>
+<a href="#cotizacion">Contacto</a>
+</div>
+
+<a href="#cotizacion" class="nav-cta">
+Obtener consulta
+</a>
+
+</div>
+</nav>
+
+<section class="hero" id="inicio">
+
+<div class="container hero-grid">
+
+<div class="reveal">
+
+<div class="badge">
+Hablo Español 🇲🇽 | California
+</div>
+
+<h1>
+Protección para tu familia, hecha a tu medida.
+</h1>
+
+<p>
+Ayudo a familias latinas a encontrar opciones simples y claras para proteger a quienes más aman.
+</p>
+
+<div class="hero-actions">
+
+<a href="#cotizacion" class="btn btn-primary">
+Cotización Gratis
+</a>
+
+<a href="tel:+14157253295" class="btn btn-secondary">
+Llamar Ahora
+</a>
+
+</div>
+
+<div class="license-box">
+<strong>Christian Vazquez</strong>
+<span>NPN: 22113889</span>
+<span>License: 4524013</span>
+</div>
+
+</div>
+
+<div class="hero-card reveal">
+
+<img
+class="profile"
+src="christian.png"
+alt="Christian Vazquez"
+>
+
+<div class="floating-note">
+Seguros de vida, gastos finales, mortgage protection e IUL.
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="sobre-mi">
+
+<div class="container">
+
+<div class="section-title reveal">
+<h2>Mi historia</h2>
+
+<p>
+Una página humana para familias reales.
+</p>
+</div>
+
+<div class="about-box reveal">
+
+<div class="about-highlight">
+
+<h3>De Toluca a California</h3>
+
+<p>
+Llegué a California a los 15 años desde Toluca, Estado de México.
+</p>
+
+<p>
+Hoy ayudo a familias latinas a encontrar protección de forma clara y simple.
+</p>
+
+</div>
+
+<div class="about-text">
+
+<p>
+Mi objetivo es que cada familia se sienta escuchada y protegida.
+</p>
+
+<p>
+Ayudo con gastos finales, mortgage protection, seguros de vida e IUL.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="servicios">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Cómo puedo ayudarte</h2>
+
+<p>
+Opciones simples para proteger a tu familia.
+</p>
+
+</div>
+
+<div class="cards">
+
+<div class="card reveal">
+<div class="icon">🕊️</div>
+<h3>Gastos Finales</h3>
+<p>Protección para gastos funerarios.</p>
+</div>
+
+<div class="card reveal">
+<div class="icon">🏠</div>
+<h3>Mortgage Protection</h3>
+<p>Ayuda a proteger tu hogar y familia.</p>
+</div>
+
+<div class="card reveal">
+<div class="icon">👨‍👩‍👧</div>
+<h3>Seguro de Vida</h3>
+<p>Protección para quienes más amas.</p>
+</div>
+
+<div class="card reveal">
+<div class="icon">📈</div>
+<h3>IUL</h3>
+<p>Protección con potencial de crecimiento.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="companias">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Top A-Rated Carriers</h2>
+
+<p>
+Protección hecha a tu medida.
+</p>
+
+</div>
+
+<div class="carrier-box reveal">
+
+<div>
+
+<h3>Opciones personalizadas</h3>
+
+<p>
+Buscamos opciones según tu edad, salud y presupuesto.
+</p>
+
+</div>
+
+<div class="carrier-tags">
+<span>Term Life</span>
+<span>Final Expense</span>
+<span>Mortgage</span>
+<span>IUL</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section>
+
+<div class="container">
+
+<div class="story reveal">
+
+<div>
+
+<h2>Familias latinas primero</h2>
+
+<p>
+Mi enfoque es explicar todo de forma clara y ayudarte a encontrar algo cómodo para tu familia.
+</p>
+
+</div>
+
+<div class="quote">
+“La protección de tu familia debería sentirse simple y humana.”
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="testimonios">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Familias que ayudamos</h2>
+
+</div>
+
+<div class="testimonials">
+
+<div class="testimonial reveal">
+
+<p>
+“Christian me ayudó en español y me ayudó a obtener protección de forma simple.”
+</p>
+
+<h3>Francisca Contreras</h3>
+<span>68 años</span>
+
+</div>
+
+<div class="testimonial reveal">
+
+<p>
+“Nunca pensé que obtener un seguro fuera tan sencillo. Ojala mas personas recibieran un apoyo como este”
+</p>
+
+<h3>Gloria Zúñiga</h3>
+<span>56 años</span>
+
+</div>
+
+<div class="testimonial reveal">
+
+<p>
+“Gracias a Christian sé que mis hijas podrán estar bien.”
+</p>
+
+<h3>Víctor Cruz</h3>
+<span>65 años</span>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="cotizacion">
+
+<div class="container">
+
+<div class="section-title reveal">
+
+<h2>Recibe una cotización gratis</h2>
+
+<p>
+Déjame tus datos y revisamos opciones para tu familia.
+</p>
+
+</div>
+
+<form
+class="form-wrap reveal"
+action="https://formsubmit.co/Christianglifeconsulting@gmail.com"
+method="POST"
+>
+
+<input type="hidden" name="_subject" value="Nuevo lead desde mi website">
+<input type="hidden" name="_captcha" value="false">
+
+<div class="form-grid">
+
+<div class="field full">
+<label>Nombre completo</label>
+<input type="text" name="Nombre" required>
+</div>
+
+<div class="field">
+<label>Correo</label>
+<input type="email" name="Correo" required>
+</div>
+
+<div class="field">
+<label>Teléfono</label>
+<input type="tel" name="Telefono" placeholder="" required>
+</div>
+
+<div class="field">
+<label>Fecha de nacimiento</label>
+<input type="text" name="Fecha de nacimiento" placeholder="MM/DD/YYYY" required>
+</div>
+
+<div class="field full">
+<label>¿Para qué tipo de protección necesitas ayuda?</label>
+
+<select name="Tipo de protección" required>
+<option value="" selected disabled></option>
+<option value="Gastos finales">Gastos finales</option>
+<option value="Mortgage Protection">Mortgage Protection</option>
+<option value="Seguro de vida">Seguro de vida</option>
+<option value="IUL">IUL</option>
+<option value="No estoy seguro">No estoy seguro</option>
+</select>
+
+</div>
+
+<div class="field full">
+<label>¿Quién sería el beneficiario?</label>
+
+<select name="Beneficiario" required>
+<option value="" selected disabled></option>
+<option value="Hijos">Hijos</option>
+<option value="Cónyuge">Cónyuge</option>
+<option value="Nietos">Nietos</option>
+<option value="Otro">Otro</option>
+</select>
+
+</div>
+
+<div class="field full">
+<label>Mensaje opcional</label>
+
+<textarea
+name="Mensaje"
+placeholder="Cuéntame brevemente qué estás buscando."
+></textarea>
+
+</div>
+
+</div>
+
+<br>
+
+<button class="btn btn-primary" type="submit">
+Enviar información
+</button>
+
+</form>
+
+<div class="calendar-box reveal">
+
+<h3>¿Prefieres agendar?</h3>
+
+<p>
+Escoge un horario que funcione para ti.
+</p>
+
+<a
+href="https://calendly.com/christianglifeconsulting/30min"
+target="_blank"
+class="btn btn-secondary"
+>
+Agendar consulta
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<p>
+<strong>Christian Vazquez</strong>
+</p>
+
+<p>
+NPN: 22113889 | License: 4524013
+</p>
+
+<p>
++1 415 725 3295
+</p>
+
+<p>
+Ayudando a familias como la mía.
+</p>
+
+</footer>
+
+<script>
+
+const reveals=document.querySelectorAll(".reveal");
+
+const observer=new IntersectionObserver((entries)=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+entry.target.classList.add("active");
+}
+
+});
+
+},{threshold:.14});
+
+reveals.forEach(el=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
